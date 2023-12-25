@@ -39,7 +39,7 @@ In addition to the hash of the previous block, a BCHT block also contains a list
 1. The hostname to be voted on; and
 2. The attitude of the vote.
 
-The attitude field stores what should this entry represent, for example, an upvote or a downvote.
+The attitude field stores what should this entry represent, for example, an upvote.
 
 ## Proof-of-Work
 
@@ -50,6 +50,10 @@ To increase the cost of casting new blocks, a proof-of-work mechanism is introdu
 After a new block is cast, it should be broadcast to other nodes. Upon receiving a new block, the node should work on it instead of the previous one. This is straightforward when it comes to linear block casting.
 
 However, if a node receives multiple blocks with the same previous block, same as Bitcoin, "they work on the first one they received, but save the other branch in case it becomes longer." This ensures the wide-accepted chain would always be linear.
+
+## Using the data inside the blockchain
+
+The blockchain only defines a key-value pair of hostnames against their votes. To use it properly, hostnames should be compared with each other to find similar ones. After sorting the results, if another similar hostname has significantly more votes, the current hostname may be considered nontrustworthy. However, the exact procedure of using the blockchain shall not be defined strictly in the specifications.
 
 ## Structure of BCHT Blockchain
 
